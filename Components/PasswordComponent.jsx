@@ -4,7 +4,7 @@ import React from 'react'
 const PasswordComponent = () => {
   return (
     <View>
-      <Text>PasswordComponent</Text>
+      <Text>PasswordComponent which tell us you password is weak</Text>
     </View>
   )
 }
