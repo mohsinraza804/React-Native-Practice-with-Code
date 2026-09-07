@@ -2,7 +2,7 @@ import { View, Text, TextInput, Button } from 'react-native';
 import React, { useState } from 'react';
 import { SafeAreaProvider, SafeAreaView, } from 'react-native-safe-area-context';
 import LiveCharacterCounter from './Components/LiveCharacterCounter'
-
+import PasswordComponent from './Components/PasswordComponent'
 const App = () => {
   const [text, setText] = useState('');
 
@@ -32,6 +32,8 @@ const App = () => {
         </View>
 
         <LiveCharacterCounter />
+
+        <PasswordComponent />
 
       </SafeAreaView>
     </SafeAreaProvider>
