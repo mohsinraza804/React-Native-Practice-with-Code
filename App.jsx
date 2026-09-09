@@ -6,6 +6,7 @@ import PullToReferesh from './Components/PullToReferesh'
 import Loadmore from './Components/Loadmore'
 import MiniEcommerce from './MiniEcommerce'
 import ListinSection from './SectionListComponents/ListinSection';
+import StudentCourseSectionList from './SectionListComponents/StudentCourseSectionLIst'
 const App = () => {
 
   const fruit = [
@@ -33,7 +34,10 @@ const App = () => {
       <SafeAreaView>
 
         <ScrollView>
-          <ListinSection />
+
+          <StudentCourseSectionList />
+
+          {/* <ListinSection /> */}
 
 
           {/* <MiniEcommerce /> */}

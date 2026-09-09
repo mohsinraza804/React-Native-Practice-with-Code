@@ -64,3 +64,53 @@ We can display this array using:
 **Array → FlatList → Display items**
 
 FlatList is useful when we have **many items** because it efficiently renders the list.
+
+# 📚 React Native SectionList Practice
+
+This is a practice project for learning **SectionList in React Native**.
+
+## What is SectionList?
+
+`SectionList` is used to display data in **different sections/categories** with section headers. And it will handles nested Array.
+
+Example:
+
+* Computer Science
+
+  * Computer Networks
+  * Operating Systems
+* Mathematics
+
+  * Calculus
+  * Statistics
+
+## What I Practiced
+
+* SectionList
+* `sections`
+* `renderItem`
+* `renderSectionHeader`
+* `keyExtractor`
+* Multiple sections
+* Course and teacher data
+* Styling SectionList
+
+## Sections
+
+* Computer Science
+* Mathematics
+* English
+* Programming
+
+Each section contains **5 courses**.
+
+## 🧠 What I Learned
+
+`FlatList` is used for a normal list, while `SectionList` is useful for **categorized/grouped data**.
+
+### Technologies
+
+* React Native
+* JavaScript
+* SectionList
+
