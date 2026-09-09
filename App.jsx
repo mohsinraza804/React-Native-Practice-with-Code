@@ -27,7 +27,7 @@ const App = () => {
   )
 
   return (
-    <SafeAreaProvider>
+    <SafeAreaProvider style={{ backgroundColor: '#192d5a',}}>
 
       <SafeAreaView>
 
