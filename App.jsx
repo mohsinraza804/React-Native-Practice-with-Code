@@ -5,6 +5,7 @@ import SeacrhableFlatList from './Components/SearchableFlatList'
 import PullToReferesh from './Components/PullToReferesh'
 import Loadmore from './Components/Loadmore'
 import MiniEcommerce from './MiniEcommerce'
+import ListinSection from './SectionListComponents/ListinSection';
 const App = () => {
 
   const fruit = [
@@ -27,14 +28,17 @@ const App = () => {
   )
 
   return (
-    <SafeAreaProvider style={{ backgroundColor: '#192d5a',}}>
+    <SafeAreaProvider style={{ backgroundColor: '#192d5a', }}>
 
       <SafeAreaView>
 
         <ScrollView>
-          <MiniEcommerce />
+          <ListinSection />
 
-{/* 
+
+          {/* <MiniEcommerce /> */}
+
+          {/* 
           <View>
             <FlatList
               data={fruit}
