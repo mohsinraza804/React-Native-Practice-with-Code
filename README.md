@@ -1,97 +1,151 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# React Native Dialog Box
 
-# Getting Started
+## What Is a Dialog Box?
+A dialog box is a popup that displays information or asks the user to perform an action.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+## Why Do We Use It?
+- To show success or error messages.
+- To confirm actions, such as deleting an item.
+- To collect information without leaving the screen.
+- To create popup forms.
 
-## Step 1: Start Metro
+## 1. Modal Syntax
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+```jsx
+const [visible, setVisible] = useState(false);
 
-To start the Metro dev server, run the following command from the root of your React Native project:
-
-```sh
-# Using npm
-npm start
-
-# OR using Yarn
-yarn start
+<Modal
+  visible={visible}
+  transparent={true}
+  onRequestClose={() => setVisible(false)}
+>
+  <View>
+    <Text>Hello! This is my Dialog Box.</Text>
+  </View>
+</Modal>
 ```
 
-## Step 2: Build and run your app
+**Why?** `Modal` displays a popup. `visible` controls whether it is open or closed.
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+## 2. Open and Close Modal
 
-### Android
+```jsx
+// Open
+setVisible(true);
 
-```sh
-# Using npm
-npm run android
-
-# OR using Yarn
-yarn android
+// Close
+setVisible(false);
 ```
 
-### iOS
+**Why?** We use state to control the visibility of the popup.
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
+## 3. Move to the Next Step
 
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
+```jsx
+const [step, setStep] = useState(1);
 
-```sh
-bundle install
+const nextStep = () => {
+  setStep(step + 1);
+};
 ```
 
-Then, and every time you update your native dependencies, run:
+**Why?** It updates the current step in a multi-step form.
 
-```sh
-bundle exec pod install
+## 4. Display Items Using map()
+
+```jsx
+{[1, 2, 3].map((item) => (
+  <Text key={item}>{item}</Text>
+))}
 ```
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+**Output:** `1`, `2`, `3`
 
-```sh
-# Using npm
-npm run ios
+**Why?** `map()` creates repeated UI elements without writing each one separately.
 
-# OR using Yarn
-yarn ios
+## 5. Conditional Rendering
+
+```jsx
+{step === 1 && <Text>Enter Your Name</Text>}
+{step === 2 && <Text>Enter Your Email</Text>}
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+**Why?** It displays different content depending on the current step.
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+## What I Practiced
+- `Modal` to display popups.
+- `useState` to manage state.
+- `onPress` to handle button clicks.
+- `TextInput` to collect user information.
+- `map()` to display progress steps.
+- Conditional rendering and input validation.
+- A multi-step registration form.
 
-## Step 3: Modify your app
+## Practice Questions
+1. What is a Dialog Box?
+2. Why do we use `Modal`?
+3. What does `visible` do?
+4. Why do we use `useState`?
+5. What does `map()` do?
+6. What is conditional rendering?
 
-Now that you have successfully run the app, let's make changes!
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+# React Native Alert
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+## What is Alert?
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+`Alert` is a built-in React Native API used to display a popup message on the screen. It can show information, warnings, errors, and confirmation messages.
 
-## Congratulations! :tada:
+## Syntax
 
-You've successfully run and modified your React Native App. :partying_face:
+```jsx
+Alert.alert(
+  'Title',
+  'Message',
+  [
+    { text: 'Cancel', onPress: () => console.log('Cancelled') },
+    { text: 'OK', onPress: () => console.log('OK Pressed') }
+  ],
+  { cancelable: false }
+);
+```
 
-### Now what?
+## What I Practiced
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+- Displaying an alert when a button is pressed.
+- Using alert titles and messages.
+- Creating multiple buttons, such as Yes, No, OK, and Cancel.
+- Handling button clicks using `onPress`.
+- Asking for confirmation before completing an action.
+- Validating form inputs with alerts.
+- Showing success and error messages.
+- Using `setTimeout()` to delay an alert.
+- Preventing repeated actions by disabling a button.
+- Managing task status with `useState`.
 
-# Troubleshooting
+## Mini Projects
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+1. Delete Confirmation
+2. Exit Confirmation
+3. Registration Form Validation
+4. Task Completion Confirmation
+5. Login Validation
+6. Reset Counter Confirmation
 
-# Learn More
+## Important Notes
 
-To learn more about React Native, take a look at the following resources:
+- Import Alert from `react-native`.
+- Use `Alert.alert(title, message, buttons, options)`.
+- Use `onPress` to handle a button click.
+- Use `cancelable` to control whether an Android alert can be dismissed by tapping outside it or pressing Back.
+- Alerts display messages; they do not automatically perform actions such as closing the app or deleting data.
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+## Example Import
+
+```jsx
+import { Alert } from 'react-native';
+```
+
+## Learning Goal
+
+Understand how to use alerts to display messages, validate user input, request confirmation, and handle user actions in React Native.
