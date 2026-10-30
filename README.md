@@ -1,97 +1,111 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Axios API Methods in React Native
 
-# Getting Started
+## What is Axios?
+Axios is a JavaScript library used to send HTTP requests from React Native to a backend API.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+## 5 Important API Methods
 
-## Step 1: Start Metro
+| Method | Purpose | Example |
+|---|---|---|
+| GET | Fetch/read data | Display expenses |
+| POST | Create new data | Add expense |
+| PUT | Update complete data | Edit all expense details |
+| PATCH | Update specific data | Change expense status |
+| DELETE | Remove data | Delete expense |
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+## Basic Syntax
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+```javascript
+// GET
+axios.get('/expenses');
 
-```sh
-# Using npm
-npm start
+// POST
+axios.post('/expenses', data);
 
-# OR using Yarn
-yarn start
+// PUT
+axios.put('/expenses/1', data);
+
+// PATCH
+axios.patch('/expenses/1', { status: 'completed' });
+
+// DELETE
+axios.delete('/expenses/1');
 ```
 
-## Step 2: Build and run your app
+## CRUD Operations
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+- **C – Create:** POST
+- **R – Read:** GET
+- **U – Update:** PUT / PATCH
+- **D – Delete:** DELETE
 
-### Android
+## What I Learned
 
-```sh
-# Using npm
-npm run android
+- How to connect React Native with a backend API.
+- How to fetch and display data.
+- How to add new records.
+- How to update complete or specific fields.
+- How to delete records.
+- How to use Axios with async/await.
+- How to handle API errors using try/catch.
 
-# OR using Yarn
-yarn android
-```
+## Technologies
+- React Native
+- JavaScript
+- Axios
+- JSON Server
+- REST API
 
-### iOS
+# Expense Tracker App
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
+## About
+A React Native Expense Tracker application that helps users manage daily expenses, track spending, and monitor completed and pending payments.
 
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
+## Features
+- Add new expenses.
+- View all expenses.
+- Update complete expense details.
+- Update expense status.
+- Delete expenses.
+- Calculate total spending.
+- Calculate completed and pending amounts.
+- Display expenses in attractive cards.
+- Form validation and error handling.
 
-```sh
-bundle install
-```
+## API Methods Practiced
 
-Then, and every time you update your native dependencies, run:
+| API Method | Purpose |
+|---|---|
+| GET | Fetch all expenses |
+| POST | Add a new expense |
+| PUT | Update complete expense |
+| PATCH | Update specific expense fields |
+| DELETE | Delete an expense |
 
-```sh
-bundle exec pod install
-```
+## React Native Concepts Practiced
+- Functional Components
+- useState and useEffect
+- TextInput and TouchableOpacity
+- Event Handling
+- ScrollView
+- StyleSheet
+- map(), filter(), reduce()
+- Conditional Rendering
+- Form Validation
+- Async/Await and Try/Catch
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+## Technologies Used
+- React Native
+- JavaScript
+- Axios
+- JSON Server
+- REST API
 
-```sh
-# Using npm
-npm run ios
+## API Base URL
+`http://10.0.2.2:3000/expenses`
 
-# OR using Yarn
-yarn ios
-```
+## What I Learned
+Through this project, I practiced API integration, CRUD operations, state management, handling user input, calculating expenses, and creating a user-friendly mobile interface.
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
-
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
-
-## Step 3: Modify your app
-
-Now that you have successfully run the app, let's make changes!
-
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
-
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
-
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+## Project Goal
+To build a practical real-world expense management application using React Native and REST APIs.
