@@ -1,97 +1,86 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# React Native Drawer Navigation
 
-# Getting Started
+## What is Drawer Navigation?
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+Drawer Navigation is a navigation system in React Native that displays a menu from the side of the screen (usually the left side).
 
-## Step 1: Start Metro
+Users can open the drawer and move between different screens of an application.
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+## Why Do We Use Drawer Navigation?
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+- To navigate between multiple screens.
+- To organize application screens in one side menu.
+- To provide easy access to different sections.
+- To create a user-friendly navigation experience.
+- To display profile information and images in the drawer.
 
-```sh
-# Using npm
-npm start
+## Installation
 
-# OR using Yarn
-yarn start
+```bash
+npm install @react-navigation/drawer
 ```
 
-## Step 2: Build and run your app
+Additional dependencies may be required according to your React Native setup.
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+## Basic Syntax
 
-### Android
+```jsx
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
-```sh
-# Using npm
-npm run android
+const Drawer = createDrawerNavigator();
 
-# OR using Yarn
-yarn android
+<Drawer.Navigator>
+  <Drawer.Screen name="Home" component={HomeScreen} />
+  <Drawer.Screen name="Profile" component={ProfileScreen} />
+  <Drawer.Screen name="Settings" component={SettingsScreen} />
+</Drawer.Navigator>
 ```
 
-### iOS
+## Important Concepts
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
+### 1. createDrawerNavigator()
+Creates a drawer navigation instance.
 
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
+### 2. Drawer.Navigator
+Defines the drawer navigation structure.
 
-```sh
-bundle install
-```
+### 3. Drawer.Screen
+Registers individual screens in the drawer.
 
-Then, and every time you update your native dependencies, run:
+### 4. screenOptions
+Used to style the drawer and header, such as:
+- Background color
+- Drawer width
+- Active and inactive colors
+- Header styling
+- Label styling
 
-```sh
-bundle exec pod install
-```
+### 5. drawerContent
+Used to customize the drawer's content, such as:
+- Profile image
+- User name and email
+- Custom layouts
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+### 6. DrawerContentScrollView
+Makes custom drawer content scrollable.
 
-```sh
-# Using npm
-npm run ios
+### 7. DrawerItemList
+Displays the registered drawer screens automatically.
 
-# OR using Yarn
-yarn ios
-```
+### 8. Props
+React Navigation provides drawer information through props. We pass `{...props}` to components such as `DrawerContentScrollView` and `DrawerItemList`.
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+## What I Practiced
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+- Creating Drawer Navigation.
+- Adding multiple screens.
+- Styling drawer items and headers.
+- Adding images inside the drawer.
+- Customizing drawer content.
+- Passing props to drawer components.
+- Implementing Login and Logout functionality.
+- Showing different screens based on login state.
 
-## Step 3: Modify your app
+## Conclusion
 
-Now that you have successfully run the app, let's make changes!
-
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
-
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
-
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+Drawer Navigation helps us organize multiple screens and allows users to navigate easily through a side menu. It is commonly used in applications that have several sections.
