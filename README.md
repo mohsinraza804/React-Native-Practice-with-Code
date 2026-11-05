@@ -1,97 +1,430 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# React Native – Bottom Tab Navigation
 
-# Getting Started
+## 1. What is Bottom Tab Navigation?
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+Bottom Tab Navigation is a navigation system in React Native that allows users to move between different screens using tabs displayed at the bottom of the application.
 
-## Step 1: Start Metro
+For example:
+- Home
+- Search
+- Profile
+- Settings
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+When a user clicks a tab, its respective screen opens.
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+## 2. Why do we use Bottom Tab Navigation?
 
-```sh
-# Using npm
-npm start
+We use Bottom Tab Navigation because:
 
-# OR using Yarn
-yarn start
+- It makes navigation easy for users.
+- Users can quickly switch between screens.
+- It provides a better user experience.
+- It is commonly used in real-world applications.
+- It keeps important screens easily accessible.
+
+**Real-world examples:** Instagram, Facebook, Shopping Apps, Banking Apps and Music Apps.
+
+## 3. Installation
+
+Install the required packages:
+
+```bash
+npm install @react-navigation/native
+npm install @react-navigation/bottom-tabs
+npm install react-native-screens
+npm install react-native-safe-area-context
+npm install react-native-vector-icons
 ```
 
-## Step 2: Build and run your app
+For React Native CLI, rebuild the Android application after installing native dependencies.
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+## 4. Basic Setup
 
-### Android
+First, import the required packages:
 
-```sh
-# Using npm
-npm run android
+```javascript
+import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
 
-# OR using Yarn
-yarn android
+import { createBottomTabNavigator }
+from '@react-navigation/bottom-tabs';
+
+import Ionicons from 'react-native-vector-icons/Ionicons';
 ```
 
-### iOS
+Create the navigator:
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
+```javascript
+const Tab = createBottomTabNavigator();
 ```
 
-Then, and every time you update your native dependencies, run:
+`createBottomTabNavigator()` creates a Bottom Tab Navigation instance.
 
-```sh
-bundle exec pod install
+## 5. Create Separate Screen Components
+
+Each tab has its own screen component.
+
+```javascript
+const HomeScreen = () => {
+    return (
+        <View>
+            <Text>Home Screen</Text>
+        </View>
+    );
+};
+
+const ProfileScreen = () => {
+    return (
+        <View>
+            <Text>Profile Screen</Text>
+        </View>
+    );
+};
+
+const SettingsScreen = () => {
+    return (
+        <View>
+            <Text>Settings Screen</Text>
+        </View>
+    );
+};
 ```
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+## 6. Create Bottom Tab Navigation
 
-```sh
-# Using npm
-npm run ios
+```javascript
+const TabNavigation = () => {
+    return (
+        <Tab.Navigator>
 
-# OR using Yarn
-yarn ios
+            <Tab.Screen
+                name="Home"
+                component={HomeScreen}
+            />
+
+            <Tab.Screen
+                name="Profile"
+                component={ProfileScreen}
+            />
+
+            <Tab.Screen
+                name="Settings"
+                component={SettingsScreen}
+            />
+
+        </Tab.Navigator>
+    );
+};
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+### Important concepts
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+- `Tab.Navigator`: Creates the bottom navigation container.
+- `Tab.Screen`: Creates an individual tab.
+- `name`: Defines the screen name.
+- `component`: Defines which component will display when the tab is selected.
 
-## Step 3: Modify your app
+## 7. What is screenOptions?
 
-Now that you have successfully run the app, let's make changes!
+`screenOptions` is used to customize the appearance and behavior of navigation screens.
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+Example:
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+```javascript
+<Tab.Navigator
+    screenOptions={{
+        headerShown: false,
+        tabBarActiveTintColor: 'blue',
+        tabBarInactiveTintColor: 'gray',
+    }}
+>
+```
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+### Important properties
 
-## Congratulations! :tada:
+| Property | Purpose |
+|---|---|
+| `headerShown` | Shows or hides the header |
+| `tabBarActiveTintColor` | Changes selected icon and label color |
+| `tabBarInactiveTintColor` | Changes unselected icon and label color |
+| `tabBarStyle` | Customizes the complete bottom bar |
+| `tabBarLabel` | Changes the label text |
+| `tabBarLabelStyle` | Styles the label text |
+| `tabBarIcon` | Displays an icon for each tab |
+| `tabBarActiveBackgroundColor` | Changes selected tab background |
+| `tabBarInactiveBackgroundColor` | Changes unselected tab background |
+| `tabBarBadge` | Displays a badge on a tab |
 
-You've successfully run and modified your React Native App. :partying_face:
+## 8. What is route?
 
-### Now what?
+`route` is an object provided by React Navigation that contains information about the current screen.
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+Example:
 
-# Troubleshooting
+```javascript
+screenOptions={({ route }) => ({
+    // Access current screen information
+})}
+```
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+We can use `route.name` to identify which screen is being displayed.
 
-# Learn More
+## 9. What is focused?
 
-To learn more about React Native, take a look at the following resources:
+`focused` is a Boolean value provided by React Navigation.
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+It tells us whether a tab is currently selected or not.
+
+- `true`: Tab is selected.
+- `false`: Tab is not selected.
+
+Example:
+
+```javascript
+tabBarIcon: ({ focused, color, size }) => {
+
+    let iconName;
+
+    if (focused) {
+        iconName = 'home';
+    } else {
+        iconName = 'home-outline';
+    }
+
+    return (
+        <Ionicons
+            name={iconName}
+            size={size}
+            color={color}
+        />
+    );
+}
+```
+
+## 10. Dynamic Icon Handling
+
+We can display different icons depending on the selected screen.
+
+```javascript
+const IconHandler = ({ route, focused, color, size }) => {
+
+    let iconName;
+
+    if (route.name === 'Home') {
+        iconName = focused ? 'home' : 'home-outline';
+    }
+    else if (route.name === 'Profile') {
+        iconName = focused ? 'person' : 'person-outline';
+    }
+    else if (route.name === 'Settings') {
+        iconName = focused ? 'settings' : 'settings-outline';
+    }
+
+    return (
+        <Ionicons
+            name={iconName}
+            size={size}
+            color={color}
+        />
+    );
+};
+```
+
+Usage:
+
+```javascript
+tabBarIcon: ({ focused, color, size }) =>
+    IconHandler({ route, focused, color, size })
+```
+
+## 11. What is tabBarLabel?
+
+`tabBarLabel` controls the text displayed below the tab icon.
+
+Example:
+
+```javascript
+tabBarLabel: 'Dashboard'
+```
+
+We can also customize labels dynamically:
+
+```javascript
+tabBarLabel: ({ focused, color }) => (
+    <Text
+        style={{
+            color: color,
+            fontWeight: focused ? 'bold' : 'normal',
+        }}
+    >
+        Home
+    </Text>
+)
+```
+
+### tabBarLabel vs tabBarLabelStyle
+
+- `tabBarLabel`: Changes the label text.
+- `tabBarLabelStyle`: Changes the label's appearance.
+
+Example:
+
+```javascript
+tabBarLabelStyle: {
+    fontSize: 14,
+    fontWeight: 'bold',
+}
+```
+
+## 12. What is tabBarStyle?
+
+`tabBarStyle` customizes the complete bottom navigation bar.
+
+Example:
+
+```javascript
+tabBarStyle: {
+    backgroundColor: '#222831',
+    height: 70,
+    paddingBottom: 8,
+    paddingTop: 8,
+    borderTopWidth: 0,
+    elevation: 5,
+}
+```
+
+We can customize:
+- Background color
+- Height
+- Padding
+- Border
+- Shadow
+
+**Important difference:**
+
+- `tabBarStyle`: Changes the entire bottom bar.
+- `tabBarActiveBackgroundColor`: Changes the selected tab's background.
+- `tabBarInactiveBackgroundColor`: Changes the unselected tabs' background.
+
+## 13. What is tabBarBadge?
+
+A badge displays a small number or notification indicator on a tab.
+
+Example:
+
+```javascript
+options={{
+    tabBarBadge: 5,
+}}
+```
+
+This displays 5 notifications on the selected tab's badge location.
+
+### Dynamic Badge Using useState
+
+```javascript
+const [count, setCount] = useState(5);
+```
+
+Display the badge:
+
+```javascript
+options={{
+    tabBarBadge: count,
+}}
+```
+
+Update the badge when the user opens Notifications:
+
+```javascript
+listeners={{
+    focus: () => setCount(0),
+}}
+```
+
+### How it works
+
+1. Initially, the badge displays 5.
+2. The user opens Notifications.
+3. The focus event runs.
+4. `setCount(0)` updates the state.
+5. The badge updates to 0.
+6. When the user returns to Home, the badge remains 0.
+
+## 14. What is focus listener?
+
+A focus listener detects when a screen becomes active.
+
+Example:
+
+```javascript
+listeners={{
+    focus: () => {
+        console.log('Screen is focused');
+    },
+}}
+```
+
+We used it to reset notification badges when the Notifications screen opens.
+
+## 15. Important Navigation Concepts I Practiced
+
+During this practice, I learned:
+
+- Creating Bottom Tab Navigation.
+- Creating multiple screen components.
+- Using `createBottomTabNavigator()`.
+- Using `Tab.Navigator` and `Tab.Screen`.
+- Understanding `screenOptions`.
+- Understanding the `route` object.
+- Understanding the `focused` property.
+- Using Ionicons.
+- Creating dynamic icons.
+- Customizing active and inactive colors.
+- Customizing tab labels.
+- Using `tabBarLabelStyle`.
+- Customizing the complete tab bar using `tabBarStyle`.
+- Changing selected and unselected tab backgrounds.
+- Adding notification badges.
+- Updating badges using `useState`.
+- Using the `focus` event listener.
+- Hiding headers using `headerShown`.
+
+## 16. Important Note
+
+`tabBarIndicatorStyle` is not a standard Bottom Tab Navigation property. It is used with Material Top Tab Navigation to customize the indicator below the selected tab.
+
+Bottom Tabs and Material Top Tabs have different styling options.
+
+## 17. Practice Projects
+
+I practiced and explored these real-world application ideas:
+
+1. Food Delivery App – Home, Orders, Favorites, Profile.
+2. Notification App – Dynamic notification badge.
+3. Shopping App – Home, Products, Cart, Profile.
+4. Music App – Home, Search, Library, Profile.
+5. Expense Tracker – Dashboard, Expenses, Reports, Profile.
+6. Banking App – Home, Transactions, Cards, Profile.
+7. Social Media App – Home, Search, Reels, Notifications, Profile.
+
+## 18. Final Summary
+
+Bottom Tab Navigation helps users move between different screens through a navigation bar at the bottom of an application.
+
+The most important concepts are:
+
+- `createBottomTabNavigator()` creates the navigator.
+- `Tab.Navigator` contains all tabs.
+- `Tab.Screen` defines individual screens.
+- `screenOptions` customizes navigation.
+- `route` identifies the current screen.
+- `focused` identifies whether a tab is selected.
+- `tabBarIcon` displays icons.
+- `tabBarLabel` displays tab names.
+- `tabBarStyle` customizes the complete bar.
+- `tabBarBadge` displays notifications.
+- `useState` manages dynamic values.
+- `listeners` handles navigation events.
+
+**My learning goal:** Build real-world React Native applications using Bottom Tab Navigation, dynamic icons, badges, screen customization and state management.
